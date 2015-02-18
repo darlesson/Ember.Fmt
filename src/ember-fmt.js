@@ -4,7 +4,7 @@
  * http://www.darlesson.com/
  * https://github.com/darlesson/Ember.Fmt
  *
- * Copyright 2014, Darlesson Oliveira
+ * Copyright 2015, Darlesson Oliveira
  * Dual licensed under the MIT and GPL licenses:
  * http://www.opensource.org/licenses/mit-license.php
  * http://www.gnu.org/licenses/gpl.html
@@ -25,32 +25,25 @@
 
     /**
      This is handlebar helper for Ember and it is based on Ember.String.fmt.
-
      This is a convenient way to use format in templates.
-
      ```javascript
      Ember.STRINGS = {
         "welcome": "Welcome %@ %@!",
         "udpatedValue": "Your total is $%@."
      };
      ```
-
      ```html
      <script type="text/x-handlebars" data-template-name="home">
      {{fmt "welcome" "John" lastName}}
      </script>
      ```
-
      Format can also auto update when the value comes from the context.
-
      ```handlebars
      {{fmt "udpatedValue" controllers.cart.total}}
      ```
-
      `"welcome"` is a property of Ember.STRINGS. `"John"` is just a string.
      lastName refers to a property within the context. It could also be `"lastName"`.
      Properties base on the context become observables.
-
      @method fmt
      @for Ember.Handlebars.helpers
      @param {String} key The string to format
@@ -107,7 +100,7 @@
                 normalized = normalizePath(this, path, data);
                 value = handlebarsGet(this, path, options);
 
-                if(!value)
+                if(value === undefined)
                     value = path;
 
                 // Add an observer to the view for when the property changes.
